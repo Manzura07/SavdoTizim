@@ -1,0 +1,38 @@
+kodni birinma ketin tushuntirish:
+
+struct Product --> Bu Product nomli tuzilmaga asoslangan ma'lumot turini yaratadi.
+public string Name -->  Mahsulotning nomini saqlaydigan matnli (string) maydon.
+public int Price --> Mahsulotning narxini saqlaydigan butun sonli (int) maydon.
+public Product(string name, int price) --> Konstruktor. Yangi Product obyektini yaratishda, 
+unga nom (name) va narx (price) kabi boshlang'ich qiymatlarni beradi.
+
+struct CartItem --> Bu CartItem nomli tuzilmaga asoslangan ma'lumot turini yaratadi u savatdagi mahsulotlarni va ularning miqdorini saqlash uchun ishlatiladi.
+public Product Product --> Savatdagi mahsulotning o'zini (Product structi) saqlaydigan maydon.
+public int Quantity -->  mahsulotning savatdagi miqdorini saqlaydigan butun sonli (int) maydon.
+public CartItem(Product product, int quantity) --> Konstruktor. Yangi CartItem obyektini yaratishda, mahsulot (product) va uning miqdorini (quantity) saqlaydi.
+
+ExchangeRate --> Bu 12000 ga teng bo'lgan doimiy kursni saqlaydi, bu narxlarni dollar dan so'mga aylantirish uchun ishlatiladi.
+Mahsulotlar ro'yxati (products) -->  uchta mahsulot (Olma, Banan, Apelsin) va ularning narxlari (int shaklida) kiritilgan.
+Savat (cart) --> Savatga qo'shilgan mahsulotlar va ularning miqdorini saqlaydi.
+Menyu --> Foydalanuvchiga tanlov qilish uchun menyu taqdim etiladi. Har bir tanlov savatni boshqarish uchun turli funksiyalarni chaqiradi:
+
+Mahsulot qo'shish --> Foydalanuvchi mahsulot tanlaydi va miqdorini kiritadi, mahsulot narxi so'mga o'zgartiriladi va savatga qo'shiladi.
+Savatni ko'rish --> Savatdagi mahsulotlar, ularning miqdori va narxi  ko'rsatiladi.
+Mahsulot miqdorini yangilash --> Foydalanuvchi savatdagi mahsulotning miqdorini o'zgartiradi.
+Mahsulotni olib tashlash --> Savatdagi mahsulotni olib tashlash mumkin.
+Umumiy narxni hisoblash --> Savatdagi barcha mahsulotlar uchun umumiy narxni so'mda hisoblaydi va ko'rsatadi.
+Chiqish --> Dasturdan chiqadi.
+Narxlar konversiyasi --> xar safar narxni ko'rsatishda yoki hisoblashda, u ExchangeRate (12000) ga ko'paytiriladi, ya'ni narxlar so'mda hisoblanadi.
+
+static void AddProductToCart(List<Product> products, List<CartItem> cart) -->
+Mahsulotlarni ko'rsatish (products) -->  mavjud mahsulotlar ro'yxati ekranga chiqariladi. Har bir mahsulot narxi so'mga o'zgartiriladi (Price * ExchangeRate) va nomi bilan birga ko'rsatiladi.
+
+Mahsulot tanlash --> Foydalanuvchi mahsulotni tanlaydi (indeksi kiritiladi) va productIndex orqali tekshiriladi.
+
+Miqdor kiritish --> Foydalanuvchi tanlangan mahsulotdan necha dona kerakligini kiritadi.
+
+Savatni yangilash yoki qo'shish:
+
+Agar tanlangan mahsulot savatda allaqachon mavjud bo'lsa (cart.FindIndex yordamida tekshiriladi) uni miqdori yangilanadi (oldingi miqdoriga yangi miqdor qo'shiladi).
+Agar mahsulot savatda bo'lmasa u yangi CartItem sifatida savatga qo'shiladi.
+Tasdiqlash --> "Mahsulot savatga qo'shildi" xabari ekranga chiqariladi yoki noto'g'ri mahsulot tanlansa xatolik chiqaradi.
